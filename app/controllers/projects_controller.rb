@@ -12,8 +12,8 @@ class ProjectsController < ApplicationController
         end
 
         def create
-            project = Project.create!(project_params)
-            render json: project, status: 201
+            project = Project.create!(build_project_params)
+            render json: project, status: :created
         end
 
         def update
@@ -32,6 +32,15 @@ class ProjectsController < ApplicationController
 
         def project_params
           params.require(:project).permit(:title, :favorite, :color)
-        end        
+        end 
+        
+        def build_project_params
+            project_params_with_defaults = project_params.merge(
+              title: params.dig(:project, :title) || "New Project",
+              favorite: params.dig(:project, :favorite) || false,
+              color: params.dig(:project, :color) || '#e1bee7'
+            )
+            project_params_with_defaults
+        end
   end
   
