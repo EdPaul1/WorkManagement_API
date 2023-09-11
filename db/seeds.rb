@@ -16,25 +16,25 @@ puts "Seeding projects..."
 client1 = Project.create(
     title: 'Client 1',
     favorite: false,
-    color: '#e1bee7'
+    color: '#b2ebf2'
 )
 
 client2 = Project.create(
     title: 'Client 2',
     favorite: true,
-    color: '#e1bee7'
+    color: '#ffecb3'
 )
 
 client3 = Project.create(
     title: 'Client 3',
     favorite: false,
-    color: '#e1bee7'
+    color: '#c8e6c9'
 )
 
 client4 = Project.create(
     title: 'Client 4',
     favorite: false,
-    color: '#e1bee7'
+    color: '#f8bbd0'
 )
 
 
