@@ -1,14 +1,14 @@
 class ProjectsController < ApplicationController
         #GET /projects
         def index
-            projects = Project.includes(boards: :tasks).all
-            render json: projects, include: { boards: { include: :tasks } }
+            @projects = Project.all
+            render json: @projects, include: [ 'boards', 'boards.tasks' ]
         end
 
         # GET /projects/id
         def show
             project = Project.includes(boards: :tasks).find_by(id: params[:id])
-            render json: project, include: { boards: { include: :tasks } }
+            render json: project, include: [ 'boards', 'boards.tasks' ]
         end
 
         def create
